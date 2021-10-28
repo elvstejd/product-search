@@ -1,0 +1,29 @@
+<div class="container mt-6">
+    <a href="/products">
+        <button class="button is-info is-inverted">
+            <span class="icon">
+                <i class="fa fa-arrow-left" aria-hidden="true"></i>
+            </span>
+            <span>Regresar</span>
+        </button>
+    </a>
+    <h2 class="title is-3">Agrega un producto</h2>
+    <form method="post">
+        <label class="has-text-weight-semibold" for="name">Nombre producto</label>
+        <input class="input mb-4 mt-2" type="text" name="name">
+
+        <label class="has-text-weight-semibold" for="price">Precio producto</label>
+        <input class="input mb-5 mt-2" type="number" name="price" step=".01" />
+
+        <label class="has-text-weight-semibold" for="category">Categoria</label>
+        <div class="select is-flex mb-5 mt-2">
+            <select name="category" class="is-flex-grow-1">
+                {{#each categories as |category|}}
+                <option value={{category}}>{{category}}</option>
+                {{/each}}
+            </select>
+        </div>
+
+        <button class="button is-success" type=" submit">Registrar</button>
+    </form>
+</div>

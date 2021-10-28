@@ -1,0 +1,63 @@
+<div class="is-flex is-justify-content-space-between mt-6">
+    <h2 class="title is-2">Productos</h2>
+
+    <a href="/add-product">
+        <button class="button is-outlined is-info">
+            <span class="icon">
+                <i class="fas fa-plus"></i>
+            </span>
+            <span>Añadir producto</span>
+        </button>
+    </a>
+</div>
+
+<form method="get" class="mb-4">
+    <div class="field has-addons">
+        <div class="control is-flex-grow-1">
+            {{#if search}}
+            <input type="text" class="input" value={{search}} name="search" type="hidden" placeholder="Búsqueda">
+            {{else}}
+            <input type="text" class="input" name="search" type="hidden" placeholder="Búsqueda">
+            {{/if}}
+        </div>
+        <div class="control">
+            <button type="submit" class="button is-info">Buscar</button>
+        </div>
+    </div>
+</form>
+{{#if search}}
+<form method="get" action="/products">
+    <button class="button is-info is-inverted">
+        <span class="icon">
+            <i class="fa fa-arrow-left" aria-hidden="true"></i>
+        </span>
+        <span>Regresar a todos los productos</span>
+    </button>
+</form>
+{{/if}}
+{{#if products}}
+<table class="table is-striped is-fullwidth is-bordered">
+    <thead>
+        <tr>
+            <th scope="col">id</th>
+            <th scope="col">nombre</th>
+            <th scope="col">precio</th>
+            <th scope="col">categoria</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each products}}
+        <tr>
+            <th scope="row">{{ this.id }}</th>
+            <td>{{ this.name }}</td>
+            <td>{{ this.price }}</td>
+            <td>{{ this.category }}</td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+{{else}}
+<div class="is-flex is-justify-content-center mt-5">
+    <p class="is-danger">No hay resultados para la búsqueda</p>
+</div>
+{{/if}}
